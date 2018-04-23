@@ -4,17 +4,16 @@ const path = require('path');
 
 const config = {
   mode: 'development',
-  entry: './main.js',
+  devtool: 'source-map',
+  entry: './app.js',
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: 'bundle.js'
   },
   module: {
     rules: [
-      {test: /\.js$/, loader: 'babel-loader'},
-      {test: /\.scss$/, loader: [
-        'style-loader', 'css-loader'
-      ]}
+      {test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/},
+      {test: /\.css$/,loader: ['style-loader', 'css-loader']}
     ]
   }
 };
